@@ -40,4 +40,8 @@ This is not a plugin. It is designed to be included directly within a WordPress 
 
 4.  **Done:** The 2FA system is now active. Test it by trying to log in.
 
-## 📁 File Structure
+## ⚠️ Important Considerations
+
+* **Email Delivery:** This utility relies on the `wp_mail()` function. Your WordPress site *must* be configured to send emails reliably. For best results, use an SMTP plugin (like WP Mail SMTP) or a transactional email service (like SendGrid, Mailgun, etc.).
+* **User Lockout:** If your email delivery fails, users (including administrators) will not be able to receive their 2FA code and will be locked out. Ensure email is working *before* deploying this in a production environment.
+* **Compatibility:** This utility is designed to be lightweight. However, it may conflict with other plugins that heavily modify the WordPress login or authentication process (e.g., other 2FA plugins, social login plugins, or custom login forms).
